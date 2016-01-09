@@ -6,7 +6,12 @@ require 'optparse'
 
 begin
   OptionParser.new do |opts|
-    opts.banner = "Usage: #{File.basename(__FILE__)} FILE [FILES...]"
+    opts.banner = <<-END.gsub(/^ {4}/, '')
+    #{opts.program_name} - Pretty-prints the contents of PStore files as JSON.
+
+    Usage: #{opts.program_name} FILE [FILES...]
+    END
+    opts.version = PStorePP::VERSION
   end.parse!
 
   PStorePP::CLI.start
