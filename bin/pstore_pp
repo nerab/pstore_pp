@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'pstore_pp'
+require 'optparse'
+
+begin
+  OptionParser.new do |opts|
+    opts.banner = "Usage: #{File.basename(__FILE__)} FILE [FILES...]"
+  end.parse!
+
+  PStorePP::CLI.start
+rescue => e
+  STDERR.puts "Error - #{e.message}"
+  exit 1
+end
