@@ -8,13 +8,13 @@ class InvocationTest < Minitest::Test
 
   def test_no_file
     assert_raises do
-      PStorePP::CLI.start([])
+      PStorePP::CLI.new.start([])
     end
   end
 
   def test_non_existing_file
     assert_raises do
-      PStorePP::CLI.start('bielefeld')
+      PStorePP::CLI.new.start('bielefeld')
     end
   end
 end

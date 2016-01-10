@@ -6,6 +6,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pstore_pp'
 require 'optparse'
 
+libraries = []
+
 begin
   OptionParser.new do |opts|
     opts.banner = <<-END.gsub(/^ {4}/, '')
@@ -14,10 +16,14 @@ begin
     Usage: #{opts.program_name} FILE [FILES...]
     END
     opts.version = PStorePP::VERSION
+
+    opts.on('--require LIB', 'Require LIB before printing the PStore') do |library|
+      libraries << library
+    end
   end.parse!
 
-  PStorePP::CLI.start
+  PStorePP::CLI.new(libraries).start
 rescue => e
-  STDERR.puts "Error - #{e.message}"
+  warn "Error - #{e.message}"
   exit 1
 end
