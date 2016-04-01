@@ -12,8 +12,8 @@ This tool was partially inspired by [json_pp](https://developer.apple.com/librar
 
 Given a PStore file `database.pstore` with a root 'foo' that has a value 'bar', and another root 'some' with the value 'thing', calling pstore_pp on it would yield the following result:
 
-  $ pstore_pp database.pstore
-  {"foo":"bar","some":"thing"}
+    $ pstore_pp database.pstore
+    {"foo":"bar","some":"thing"}
 
 ## Development
 
